@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>xue</title>
+    <script src="./js/observer.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/watcher.js"></script>
+    <script src="./js/compiler.js"></script>
+    <script src="./js/xue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>{{ msg }}</div>
+      <div>{{ user.info.name }}</div>
+      <input type="text" v-model="msg" />
+      <input type="text" v-model="user.info.name" />
+      <p><button v-on:click="sayHello">click me</button></p>
+      <p>{{username}}</p>
+    </div>
+    <script>
+      const vm = new Xue({
+        el: "#app",
+        data: {
+          msg: "hello",
+          user: {
+            info: {
+              name: "tom",
+            },
+          },
+        },
+        methods: {
+          sayHello() {
+            console.log(this);
+            this.msg = "你好";
+          },
+        },
+        computed: {
+          username() {
+            console.log(this);
+            return `computed name is ${this.user.info.name}`;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
