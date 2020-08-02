@@ -15,8 +15,10 @@ class Xue {
     this.computed2data();
 
     if (this.$el) {
-      // 1. 给外界传入的所有数据(data)都添加 get/set 方法, 就可以监听数据的变化了
+      // 给外界传入的所有数据(data)都添加 get/set 方法, 就可以监听数据的变化了
       new Observer(this.$data);
+
+      // 编译模板替换 {{}} 语法 还有 v- 这样的语法
       new Compiler(this);
     }
   }
